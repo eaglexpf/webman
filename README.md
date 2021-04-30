@@ -2,8 +2,9 @@
 基于 [webman](https://github.com/walkor/webman) 的个人项目骨架
 
 ## 新增内容
-1. 基于`illuminate/events`的事件处理器
-2. 基于`symfony/console`的命令行处理器
+1. 基于`illuminate/events`的事件处理
+2. 基于`symfony/console`的命令行处理
+3. 基于`RABBITMQ`的队列处理
 
 
 ## demo

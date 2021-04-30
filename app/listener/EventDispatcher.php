@@ -38,6 +38,6 @@ class EventDispatcher implements EventDispatcherInterface
         } elseif (is_object($listener)) {
             $listenerName = get_class($listener);
         }
-        logger()->debug(sprintf('Event %s handled by %s listener.', $eventName, $listenerName));
+        logger('event')->debug(sprintf('Event %s handled by %s listener.', $eventName, $listenerName));
     }
 }

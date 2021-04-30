@@ -41,7 +41,6 @@ class ListenerProvider implements ListenerProviderInterface
             if (make($event_class_name) instanceof $event) {
                 $listeners = array_reverse($event->listeners());
                 foreach ($listeners as $key => $listener) {
-                    var_dump(make($listener) instanceof BaseListener);
                     if (make($listener) instanceof BaseListener) {
                         $this->on($event_class_name, $listener, $key + $num);
                     }
