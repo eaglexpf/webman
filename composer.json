@@ -1,39 +1,52 @@
 {
-  "name": "workerman/webman",
+  "name": "eaglexpf/webman",
   "type": "project",
   "keywords": [
     "high performance",
     "http service"
   ],
-  "homepage": "http://www.workerman.net",
+  "homepage": "https://xupengfei.net",
   "license": "MIT",
   "description": "High performance HTTP Service Framework.",
   "authors": [
     {
-      "name": "walkor",
-      "email": "walkor@workerman.net",
-      "homepage": "http://www.workerman.net",
+      "name": "eaglexpf",
+      "email": "1121252990@qq.com",
+      "homepage": "https://xupengfei.net",
       "role": "Developer"
     }
   ],
   "support": {
-    "email": "walkor@workerman.net",
-    "issues": "https://github.com/walkor/webman/issues",
-    "forum": "http://wenda.workerman.net/",
-    "wiki": "http://workerman.net/doc/webman",
-    "source": "https://github.com/walkor/webman"
+    "email": "1121252990@qq.com",
+    "issues": "https://github.com/eaglexpf/webman/issues",
+    "source": "https://github.com/eaglexpf/webman"
   },
   "require": {
     "php": ">=7.2",
     "workerman/webman-framework": "^1.0",
     "monolog/monolog": "^2.0",
-    "vlucas/phpdotenv": ">=4.1,<6.0"
+    "vlucas/phpdotenv": ">=4.1,<6.0",
+    "php-di/php-di": "^6.3",
+    "doctrine/annotations": "^1.11",
+    "illuminate/database": "^7.0",
+    "workerman/validation": "^3.0",
+    "workerman/gatewayclient": "^3.0",
+    "robmorgan/phinx": "^0.12.5",
+    "firebase/php-jwt": "^5.2",
+    "illuminate/redis": "^7.0",
+    "swiftmailer/swiftmailer": "^6.0",
+    "sentry/sdk": "^3.1",
+    "illuminate/events": "^7.30",
+    "symfony/console": "^5.2",
+    "php-amqplib/php-amqplib": ">=2.9.0",
+    "ext-json": "*"
   },
   "suggest": {
     "ext-event": "For better performance. "
   },
   "autoload": {
     "psr-4": {
+      "": "src/",
       "app\\": "app/"
     },
     "files": [
