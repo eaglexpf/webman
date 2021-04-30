@@ -129,3 +129,78 @@ class DemoCommand extends BaseCommand
 >>>
 
 ```
+
+- rabbitmq队列
+```
+sudo vim src/DemoBundle/Jobs/DemoJob.php
+<<<
+<?php
+
+namespace DemoBundle\Jobs;
+
+use app\jobs\Job;
+
+class DemoJob extends Job
+{
+    protected $data;
+
+    /**
+     * TestJob constructor.
+     * @param $data
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    public function handle()
+    {
+        var_dump($this->data);
+
+        return true;
+    }
+
+}
+>>>
+
+sudo vim src/DemoBundle/Commands/DemoCommand.php
+
+<<<
+<?php
+
+namespace DemoBundle\Commands;
+
+use app\commands\BaseCommand;
+use DemoBundle\Jobs\DemoJob;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+
+class DemoCommand extends BaseCommand
+{
+    public function configure()
+    {
+        $this->setName('queue:demo')
+            ->setDescription('队列任务 queue:demo [default: 发送的消息] [0: 延迟时间]')
+            ->addArgument('msg', InputOption::VALUE_REQUIRED, '发送的消息', 'hello world!')
+            ->addArgument('ttl', InputOption::VALUE_REQUIRED, '延迟时间', 0);
+    }
+
+    public function handle(InputInterface $input)
+    {
+        $msg = $input->getArgument('msg');
+        $ttl = $input->getArgument('ttl');
+        sendJob(new DemoJob($msg))->setQueue('webman')->setTtl($ttl)->send();
+        return true;
+    }
+
+}
+>>>
+
+
+# 消费队列
+php command queue:work [default:队列名称] [default:连接类型]
+
+# 生成队列
+php command queue:demo [msg:生产消息] [0:延迟时间]
+
+```

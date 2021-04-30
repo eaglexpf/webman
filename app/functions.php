@@ -58,3 +58,9 @@ if (!function_exists('logger')) {
         return \support\bootstrap\Log::channel($channel);
     }
 }
+
+if (!function_exists('sendJob')) {
+    function sendJob($data) {
+        return new \app\amqp\Message($data);
+    }
+}
