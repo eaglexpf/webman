@@ -97,3 +97,35 @@ return [
 ];
 >>>
 ```
+
+- 命令行
+```
+sudo vim src/DemoBundle/Commands/DemoCommand.php
+<<<
+<?php
+namespace DemoBundle\Commands;
+
+use app\commands\BaseCommand
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+
+class DemoCommand extends BaseCommand
+{
+
+    public function configure()
+    {
+        $this->setName('demo:command')
+            ->setDescription('命令描述 --type: [list: 列表]')
+            ->addOption('type', 't', InputOption::VALUE_REQUIRED, '要执行的类型');
+    }
+
+    public function handle(InputInterface $input)
+    {
+        $this->io->success($input->getOption('type'));
+        $this->io->success(date('Y-m-d H:i:s'));
+        return true;
+    }
+}
+>>>
+
+```
